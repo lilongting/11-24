@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <span>{{msg}}</span>
+    <mycomp @sendmsg="getMsgFromSon"></mycomp>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    Vue.component("mycomp", {
+      template: "<div>子组件<button @click='sendMsgToDad'>发送消息给父组件</button></div>",
+      data() {
+        return {
+          msg: "子组件内容"
+        }
+      },
+      methods: {
+        //$emit方法可以用来触发事件
+        //this.$emit("事件名称", 要传递的数据)
+        //注意$emit只能传递一个参数，如果有多份数据，那就将多份数据用对象传递即可！
+        sendMsgToDad() {
+          this.$emit("sendmsg", "我想你啦");
+        }
+      }
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        msg: ""
+      },
+      methods: {
+        getMsgFromSon(msg) {
+          console.log("俺孩子来信了，他说：" + msg)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <account></account>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script type="text/template" id="login-tpl">
+    <div class="box">
+      <h2>登录</h2>
+      <table>
+        <tr>
+          <td>用户名</td>
+          <td>
+            <input type="text">
+          </td>
+        </tr>
+        <tr>
+          <td>密码</td>
+          <td>
+            <input type="text">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button>登录</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </script>
+  <script type="text/template" id="register-tpl">
+    <div class="box">
+        <h2>注册</h2>
+        <table>
+            <tr>
+                <td>用户名</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>确认密码</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><button>注册</button></td>
+            </tr>
+        </table>
+    </div>
+</script>
+<script>
+Vue.component("account",{
+  template:"<div>Account组件<component is='login'></component></div>",
+})
+Vue.component("login",{
+  template:"#login-tpl"
+})
+Vue.component("register",{
+  template:"#register-tpl"
+})
+var v = new Vue({
+  el:"#app",
+  data:{}
+})
+</script>
+</body>
+
+</html>
